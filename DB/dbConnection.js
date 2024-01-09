@@ -5,6 +5,7 @@ var connection;
 const tableNameOne = 'customer';
 const tableNameTwo = 'item';
 const tableNameThree = 'users';
+const tableNameFour = 'otp';
 
 function dbConnection() {
     if (!connection) {
@@ -64,11 +65,19 @@ function dbConnection() {
                             user_email VARCHAR(255) NOT NULL,
                             password VARCHAR(255) NOT NULL,
                             role VARCHAR(255) NOT NULL
+                            
                         )
-                    `;                        
+                    `;
+                    const createTableFourQuery = `
+                        CREATE TABLE IF NOT EXISTS ${tableNameFour} (
+                            user_email VARCHAR(255) PRIMARY KEY,
+                            otp INT
+                        )
+                    `;     
                         connection.query(createTableOneQuery);
                         connection.query(createTableTwoQuery);
                         connection.query(createTableThreeQuery);
+                        connection.query(createTableFourQuery);
 
                     }
                 });

@@ -76,7 +76,7 @@ router.post('/', (req, res) => {
         }
 
         // Save the user only if the access token is valid and the role is admin
-        cnt.query('INSERT INTO users VALUES(?,?,?,?,?)', [req.body.id, req.body.user_name, req.body.user_email, hash, req.body.role], function (queryErr, rows, fields) {
+        cnt.query('INSERT INTO users VALUES(?,?,?,?,?,?)', [req.body.id, req.body.user_name, req.body.user_email, hash, req.body.role, req.body.otp], function (queryErr, rows, fields) {
           if (queryErr) {
             console.error(queryErr);
             res.status(500).send('Internal Server Error');
@@ -233,9 +233,6 @@ router.get('/search', (req, res) => {
     }
   });
 });
-
-
-
 
 
 module.exports = router;

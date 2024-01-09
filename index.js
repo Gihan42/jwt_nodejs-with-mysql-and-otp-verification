@@ -5,11 +5,13 @@ const app = express();
 const customer = require('./Routes/CustomerRoutes');
 const item = require('./Routes/ItemRoutes');
 const users = require('./Routes/UserRoutes');
+const otp = require('./Routes/OtpRoutes');
 
 
 app.use('/customer', customer);
 app.use('/item', item);
 app.use('/user', users);
+app.use('/otp', otp);
 
 // Define a route
 app.get('/', (req, res) => {
